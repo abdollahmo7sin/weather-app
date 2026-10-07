@@ -2,10 +2,9 @@
 
 A responsive weather app that lets you search for any city in the world and track its live weather in one dashboard.
 
-> **Live demo:** _add your deployed link here_
->
-> ![Screenshot](./screenshot.png)
-> _Add a screenshot named `screenshot.png` to the project root._
+**🔗 Live demo:** [weather-app-gamma-lemon.vercel.app](https://weather-app-gamma-lemon.vercel.app/)
+
+![Weather App showing live weather cards for Cairo, Riyadh, Dubai and London](./screenshot.png)
 
 ## Features
 
