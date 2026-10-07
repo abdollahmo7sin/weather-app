@@ -1,4 +1,4 @@
- import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 
 
 export const useFetch = <T>(API_URL: string) => {
@@ -16,18 +16,20 @@ export const useFetch = <T>(API_URL: string) => {
         try {
             SetLoading(true)
             const respons = await fetch(API_URL, { signal: abortController.current.signal })
+            if (!respons.ok) throw new Error(`Error fetching data : ${respons.status}`);
+
             const result = await respons.json()
             setData(result)
+            SetLoading(false)
         }
         catch (error) {
             if (error instanceof DOMException && error.name === 'AbortError') {
                 return
             }
             setError(error instanceof Error ? error.message : "Something went wrong")
-        }
-        finally {
             SetLoading(false)
         }
+
 
     }
     useEffect(() => {
@@ -37,7 +39,7 @@ export const useFetch = <T>(API_URL: string) => {
     }, [])
 
 
-    return { data, setData, loading,error, fetchData  } as const
+    return { data, setData, loading, error, fetchData } as const
 
 
 
